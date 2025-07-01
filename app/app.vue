@@ -1,15 +1,21 @@
-<script setup lang='ts'>
-onMounted(() => {
+<script setup lang="ts">
+onMounted(async () => {
+  await nextTick()
+
   if (import.meta.dev) {
-    const devtools: HTMLElement | null = document.querySelector('nuxt-devtools-frame');
+    const devtools: HTMLElement | null = document.querySelector(
+      "nuxt-devtools-frame"
+    );
+
+    console.log()
 
     if (devtools) {
-      devtools.style.position = 'absolute';
-      devtools.style.left = '50%';
-      devtools.style.bottom = '8px';
+      devtools.style.position = "absolute";
+      devtools.style.left = "50%";
+      devtools.style.bottom = "8px";
     }
   }
-})
+});
 </script>
 
 <template>
