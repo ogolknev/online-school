@@ -4,9 +4,7 @@ let apiClient: APIClient;
 
 export function useAPIClient() {
 
-  console.log(useRuntimeConfig().public.apiBase)
-
-  apiClient = apiClient ?? strapi({ baseURL: useRuntimeConfig().public.apiBase })
+  apiClient = apiClient ?? strapi({ baseURL: process.env.NUXT_PUBLIC_API_BASE! })
 
   return {
     client: apiClient,

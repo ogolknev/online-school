@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: ''
+      apiBase: process.env.NUXT_PUBLIC_API_BASE
     }
   },
 
@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
+    '@nuxt/test-utils/module'
   ],
 
   css: ['~/assets/css/main.css'],

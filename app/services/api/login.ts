@@ -18,5 +18,6 @@ export type LoginPayload = {
 }
 
 type LoginResponse = {
-  jwt: string
+  jwt: string,
+  user: User
 }

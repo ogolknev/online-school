@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAPI } from './services';
+
 onMounted(async () => {
   await nextTick()
 
@@ -15,6 +17,9 @@ onMounted(async () => {
       devtools.style.bottom = "8px";
     }
   }
+
+  await useAPI().login({identifier: 'ogolknevnv', password: '12092021'})
+  console.log(await useAPI().getAccessibleCourses())
 });
 </script>
 
