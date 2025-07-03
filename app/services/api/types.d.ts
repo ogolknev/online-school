@@ -1,6 +1,14 @@
 declare interface APIClient {
   fetch(...args: Parameters<typeof fetch>): Promise<Response>
+  updateSettings(settings: APIClientSettings)
 }
+
+declare interface APIClientSettings {
+  baseURL?: string
+  authKey?: string
+}
+
+declare type HTTPMethod = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT'
 
 declare interface User {
   id: number

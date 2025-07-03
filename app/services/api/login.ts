@@ -3,12 +3,19 @@ export default async function (payload: LoginPayload, client: APIClient): Promis
     method: 'POST',
     body: JSON.stringify(payload),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': '',
     }
   })
 
-  if (!response.ok) throw new Error('Failed log in: ' + response.statusText)
-  
+  if (!response.ok) {
+    if (response.status === 400) {
+      throw new Error('Invalid credentials')
+    } else {
+      throw new Error(response.statusText)
+    }
+  }
+
   return await response.json()
 }
 

@@ -7,7 +7,7 @@ export function useAPI() {
 
   async function login(payload: LoginPayload) {
     const response = await apiLogin(payload, client);
-    update({ baseURL: process.env.NUXT_PUBLIC_API_BASE!, auth: response.jwt });
+    update({ baseURL: process.env.NUXT_PUBLIC_API_BASE!, authKey: response.jwt });
 
     return response
   }
