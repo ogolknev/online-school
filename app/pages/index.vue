@@ -2,7 +2,7 @@
 
 <template>
   <div class="size-full px-5">
-    <section id="videos" class="mb-10">
+    <section id="videos" class="my-10">
       <h2 class="section-heading mb-5">Ваши уроки</h2>
 
       <div

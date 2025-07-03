@@ -20,6 +20,7 @@ onMounted(async () => {
 
 <template>
   <UApp>
+    <AppHeader />
     <NuxtPage />
   </UApp>
 </template>
