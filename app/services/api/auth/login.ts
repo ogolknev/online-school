@@ -10,7 +10,7 @@ export default async function (payload: LoginPayload, client: APIClient): Promis
 
   if (!response.ok) {
     if (response.status === 400) {
-      throw new Error('Invalid credentials')
+      throw new Error('Неверное имя пользователя или пароль')
     } else {
       throw new Error(response.statusText)
     }

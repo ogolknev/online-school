@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { FormError } from "@nuxt/ui";
 import zod from "zod";
+import { useAPI } from "~/services";
 
-const emit = defineEmits<{ submit: [state: State] }>();
+const toasts = useToast();
+const router = useRouter()
 
 const schema = zod.object({
   identifier: zod.string(),
@@ -27,10 +29,35 @@ const validate = (state: State): FormError[] => {
 
   return errors;
 };
+
+async function submit() {
+  try {
+    await useAPI().login({
+      identifier: state.value.identifier!,
+      password: state.value.password!,
+    });
+
+    router.back()
+
+  } catch (err) {
+    console.error(err);
+
+    let description: string | undefined
+
+    if (typeof err === 'string') description = err
+    else if (err instanceof Error) description = err.message
+
+    toasts.add({
+      title: "Попытка входа провалилась",
+      color: "error",
+      description
+    });
+  }
+}
 </script>
 
 <template>
-  <UForm :schema :state :validate @submit="emit('submit', state)">
+  <UForm :schema :state :validate @submit="submit">
     <UFormField
       label="Имя пользователя или Email"
       name="identifier"
@@ -42,7 +69,11 @@ const validate = (state: State): FormError[] => {
     </UFormField>
 
     <UFormField label="Пароль" name="password" class="mb-5">
-      <UInput v-model="state.password" type="password" class="w-full" placeholder="Введите пароль" />
+      <UInput
+        v-model="state.password"
+        type="password"
+        class="w-full"
+        placeholder="Введите пароль" />
     </UFormField>
 
     <div class="flex justify-end">
