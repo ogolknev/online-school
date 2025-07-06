@@ -1,6 +1,6 @@
 export async function getAccessibleVideos(client: APIClient) {
   try {
-    const response = await client.fetch('/videos/accessible?populate=course')
+    const response = await client.fetch('/api/videos/accessible?populate[0]=course&populate[1]=preview')
 
     if (!response.ok) throw new Error(response.statusText)
 

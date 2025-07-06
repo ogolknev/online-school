@@ -5,7 +5,7 @@ export default defineVitestConfig({
   test: {
     environment: "nuxt",
     env: {
-      NUXT_PUBLIC_API_BASE: "http://localhost:1337/api",
+      NUXT_PUBLIC_API_BASE: "http://localhost:1337",
     },
   },
 });

@@ -1,5 +1,5 @@
 export default async function (payload: LoginPayload, client: APIClient): Promise<LoginResponse> {
-  const response = await client.fetch('/auth/local', {
+  const response = await client.fetch('/api/auth/local', {
     method: 'POST',
     body: JSON.stringify(payload),
     headers: {

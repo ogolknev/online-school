@@ -1,13 +1,13 @@
 <script setup lang="ts">
 onMounted(async () => {
-  await nextTick()
+  await nextTick();
 
   if (import.meta.dev) {
     const devtools: HTMLElement | null = document.querySelector(
       "nuxt-devtools-frame"
     );
 
-    console.log()
+    console.log();
 
     if (devtools) {
       devtools.style.position = "absolute";

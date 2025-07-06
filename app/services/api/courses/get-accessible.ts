@@ -1,6 +1,6 @@
 export async function getAccessibleCourses(client: APIClient) {
   try {
-    const response = await client.fetch("/users/me?populate[student][populate][0]=courses")
+    const response = await client.fetch("/api/users/me?populate[student][populate][courses][populate][0]=videos&populate[student][populate][courses][populate][1]=preview")
 
     if (!response.ok) throw new Error(response.statusText)
 

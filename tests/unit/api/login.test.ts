@@ -14,6 +14,6 @@ describe("Test API", () => {
   })
 
   test('Login with wrong credentials', async () => {
-    await expect(async () => await useAPI().login({identifier: 'sdafdsasd', password: 'dafsadf'})).rejects.toThrow('Invalid credentials')
+    await expect(async () => await useAPI().login({identifier: 'sdafdsasd', password: 'dafsadf'})).rejects.toThrow('Неверное имя пользователя или пароль')
   })
 })

@@ -37,7 +37,7 @@ async function submit() {
       password: state.value.password!,
     });
 
-    router.back()
+    router.push('/')
 
   } catch (err) {
     console.error(err);
