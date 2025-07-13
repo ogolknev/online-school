@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useProfileStore } from '@/entities/user'
 import { logout } from '@/features/logout'
+import { AppLogo } from '@/shared/assets'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -25,9 +26,12 @@ function onLogout() {
   <header
     class="h-15 z-40 border-b flex items-center justify-between px-5 border-neutral-800 sticky top-0 bg-neutral-900 mb-5"
   >
-    <h1 class="font-fancy text-3xl cursor-pointer" @click="$router.push('/')">
-      Парижкая школа стилистов
-    </h1>
+    <div class="flex gap-2">
+      <UAvatar :src="AppLogo" />
+      <h1 class="font-fancy text-3xl cursor-pointer" @click="$router.push('/')">
+        Парижкая школа стилистов
+      </h1>
+    </div>
 
     <UPopover v-if="profileStore.profile" v-model:open="openProfilePopover">
       <UAvatar icon="lucide:user" class="cursor-pointer" />
