@@ -1,11 +1,14 @@
-import { defineVitestConfig } from "@nuxt/test-utils/config";
+import { fileURLToPath } from 'node:url'
+import { mergeConfig, defineConfig, configDefaults } from 'vitest/config'
+import viteConfig from './vite.config'
 
-export default defineVitestConfig({
-  // any custom Vitest config you require
-  test: {
-    environment: "nuxt",
-    env: {
-      NUXT_PUBLIC_API_BASE: "http://localhost:1337",
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      environment: 'jsdom',
+      exclude: [...configDefaults.exclude, 'e2e/**'],
+      root: fileURLToPath(new URL('./', import.meta.url)),
     },
-  },
-});
+  }),
+)

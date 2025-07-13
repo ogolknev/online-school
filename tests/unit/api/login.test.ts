@@ -1,19 +1,17 @@
-import { describe, expect, test } from "vitest";
-import { useAPI } from "~/services";
+import { login } from '../../../src/features/login'
+import { expect, test, describe } from 'vitest'
 
-describe("Test API", () => {
+describe('api test', () => {
+  test('login', async () => {
+    const response = await login({ identifier: 'test', password: 'testtest' })
 
-  test('Login with username', async () => {
-    const response = await useAPI().login({identifier: 'test', password: 'testtest'})
     expect(response).toHaveProperty('jwt')
-  })
-  
-  test('Login with email', async () => {
-    const response = await useAPI().login({identifier: 'test@test.test', password: 'testtest'})
-    expect(response).toHaveProperty('jwt')
+    expect(response).toHaveProperty('user')
   })
 
-  test('Login with wrong credentials', async () => {
-    await expect(async () => await useAPI().login({identifier: 'sdafdsasd', password: 'dafsadf'})).rejects.toThrow('Неверное имя пользователя или пароль')
+  test('login with wrong credentials', async () => {
+    const response = login({ identifier: 'tesasdt', password: 'testtadfasfest' })
+
+    await expect(response).rejects.toThrow('Invalid identifier or password')
   })
 })
