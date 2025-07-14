@@ -59,7 +59,11 @@ function disableHorizontalScroll(event: MouseEvent) {
     <div>
       <h2 class="text-2xl font-bold mb-2">Ваши курсы</h2>
 
-      <div class="flex gap-4 overflow-auto p-2 scrollbar-hidden">
+      <div
+        class="flex gap-4 overflow-auto p-2 scrollbar-hidden"
+        @mouseenter="enableHorizontalScroll"
+        @mouseleave="disableHorizontalScroll"
+      >
         <CourseThumbnail
           v-for="course in courseStore.courses"
           :key="course.documentId"

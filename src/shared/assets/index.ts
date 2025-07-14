@@ -1,1 +1,1 @@
-export { default as AppLogo } from './app-logo.png'
+export { default as AppLogo } from './app-logo.webp'
