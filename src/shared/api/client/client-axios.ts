@@ -27,6 +27,10 @@ export class APIClientAxios implements APIClient {
             router.push('/auth')
           }
 
+          if (error.response.status === 401) {
+            router.push('/auth')
+          }
+
           console.dir(error.response)
           throw new HTTPError(
             error.response.statusText + ': ' + error.response.data.error.message,
