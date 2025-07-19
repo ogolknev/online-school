@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { AppHeader } from '@/widgets/app-header'
+import { useColorMode } from '@nuxt/ui/runtime/vue/stubs.js';
+
+const mode = useColorMode()
+mode.preference = 'dark'
+
 </script>
 
 <template>
