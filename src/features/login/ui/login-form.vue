@@ -15,6 +15,7 @@ const schema = zod.object({
   identifier: zod.string().nonempty('Обязательное поле'),
   password: zod.string().nonempty('Обязательное поле'),
 })
+const showPassword = ref(false)
 
 type Schema = zod.infer<typeof schema>
 
@@ -52,7 +53,17 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormField>
 
     <UFormField label="Пароль" name="password">
-      <UInput v-model="state.password" class="w-full" />
+      <UInput v-model="state.password" class="w-full" :type="showPassword ? 'text' : 'password'">
+        <template #trailing>
+          <UButton
+            :icon="showPassword ? 'lucide:eye-off' : 'lucide:eye'"
+            @click="showPassword = !showPassword"
+            variant="link"
+            color="neutral"
+            size="sm"
+          />
+        </template>
+      </UInput>
     </UFormField>
 
     <div class="flex justify-end mt-4">
