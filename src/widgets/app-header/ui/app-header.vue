@@ -26,11 +26,9 @@ function onLogout() {
   <header
     class="h-15 z-40 border-b flex items-center justify-between px-5 border-neutral-800 sticky top-0 bg-neutral-900 mb-5"
   >
-    <div class="flex gap-2 items-center">
-      <UAvatar :src="AppLogo" class="size-10" />
-      <h1 class="font-fancy text-3xl cursor-pointer" @click="$router.push('/')">
-        Парижкая школа стилистов
-      </h1>
+    <div class="flex gap-4 items-center">
+      <UAvatar :src="AppLogo" class="size-8" />
+      <h1 class="text-3xl cursor-pointer" @click="$router.push('/')">ПАРИЖКАЯ ШКОЛА СТИЛИСТОВ</h1>
     </div>
 
     <UPopover v-if="profileStore.profile" v-model:open="openProfilePopover">
